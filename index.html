@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>داهاتوو | Dahatu</title>
+<link rel="stylesheet" href="dahatu.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="icon-btn" id="sidebarToggle" aria-label="menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="2.2" rx="1" fill="currentColor"/><rect x="3" y="11" width="18" height="2.2" rx="1" fill="currentColor"/><rect x="3" y="18" width="18" height="2.2" rx="1" fill="currentColor"/></svg>
+  </button>
+
+  <div class="header-search-row" id="headerSearchRow" style="display:none;">
+    <button class="icon-btn" id="searchBack">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="search-input-wrap">
+      <input id="searchInput" type="text" placeholder="گەڕان بۆ بەشەکان...">
+      <button class="search-clear" id="searchClearBtn">✕</button>
+    </div>
+  </div>
+
+  <div class="topbar-actions" id="topbarActions">
+    <div class="panel-anchor">
+      <button class="icon-btn" id="filterToggle" aria-label="filter">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="7" cy="6" r="1.6" fill="currentColor"/><circle cx="17" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="18" r="1.6" fill="currentColor"/></svg>
+      </button>
+      <div class="filter-panel" id="filterPanel">
+        <select id="streamSelect">
+          <option value="all">هەموو لق</option>
+          <option value="zanisti">زانستی</option>
+          <option value="edebi">ئەدەبی</option>
+        </select>
+        <div class="sort-row">
+          <span>لە ڕیزبەندی نزمەوە بۆ بەرز</span>
+          <div class="switch" id="sortLowHigh"></div>
+        </div>
+        <div class="sort-row">
+          <span>لە ڕیزبەندی بەرزەوە بۆ نزم</span>
+          <div class="switch" id="sortHighLow"></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="icon-btn" id="searchToggle" aria-label="search">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+
+    <div class="panel-anchor">
+      <button class="avatar-btn" id="avatarToggle" aria-label="profile">ش</button>
+      <div class="profile-panel" id="profilePanel">
+        <div class="profile-head">
+          <div class="ava" style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#8e6a4a,#c99a5f);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;">ش</div>
+          <div>
+            <div class="name">شەهباز</div>
+            <div class="mail">shabazkurdi100@gmail.com</div>
+          </div>
+        </div>
+        <div class="profile-row" data-action="edit"><span>دەستکاریکردنی پرۆفایل</span><span>✎</span></div>
+        <div class="profile-row" data-action="dark"><span>دۆخی تاریکی</span><div class="switch" id="darkSwitch"></div></div>
+        <div class="profile-row" data-action="settings"><span>ڕێکخستن</span><span>⚙</span></div>
+        <div class="profile-row danger" data-action="logout"><span>چوونەدەرەوە</span><span>⎋</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<div class="sidebar-scrim" id="sidebarScrim"></div>
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-head">
+    <div class="brand">داهاتوو<span class="dot">●</span></div>
+    <button class="icon-btn" id="sidebarClose">✕</button>
+  </div>
+  <div class="side-item active" data-page="home"><span>بەشەکان</span><span class="side-ico">🎓</span></div>
+  <div class="side-item" data-page="uni"><span>زانکۆ و پەیمانگاکان</span><span class="side-ico">🏛️</span></div>
+  <div class="side-item" data-page="finder"><span>دۆزینەوەی بەشی گونجاو بە پێی نمرەکەت</span><span class="side-ico">🔎</span></div>
+  <div class="side-item" data-page="placeholder" data-label="سیستەمەکانی خوێندن"><span>سیستەمەکانی خوێندن</span><span class="side-ico">📖</span></div>
+  <div class="side-item" data-page="placeholder" data-label="بەرزبوونەوە بۆ بەشی بەرزتر"><span>بەرزبوونەوە بۆ بەشی بەرزتر</span><span class="side-ico">⤴</span></div>
+  <div class="side-item" data-page="placeholder" data-label="ڕێنمایی وەرگرتن لە زانکۆ"><span>ڕێنمایی وەرگرتن لە زانکۆ</span><span class="side-ico">📘</span></div>
+  <div class="side-item" data-page="placeholder" data-label="گواستنەوە و دابەزین"><span>گواستنەوە و دابەزین</span><span class="side-ico">⇄</span></div>
+  <div class="side-item" data-page="placeholder" data-label="دڵخوازەکان"><span>دڵخوازەکان</span><span class="side-ico">★</span></div>
+</nav>
+
+<!-- MAIN VIEWS -->
+<main id="mainArea">
+
+  <!-- HOME PAGE -->
+  <section id="page-home">
+    <div class="tabs" id="homeTabs">
+      <button class="tab active" data-cat="all">هەموو</button>
+      <button class="tab" data-cat="pizishki">پزیشکییەکان</button>
+      <button class="tab" data-cat="endaziyari">ئەندازیارییەکان</button>
+      <button class="tab" data-cat="zaman">زمان</button>
+    </div>
+    <div class="grid" id="homeGrid"></div>
+  </section>
+
+  <!-- UNIVERSITIES PAGE -->
+  <section id="page-uni" style="display:none;">
+    <div class="uni-head">
+      <div class="uni-switch-anchor">
+        <button class="uni-switch-btn" id="uniSwitchBtn">
+          <span id="uniSwitchLabel">زانکۆکان</span>
+          <span>🏛️</span>
+        </button>
+        <div class="uni-dropdown" id="uniDropdown">
+          <div class="opt active" data-type="zanko"><span>🏛️</span><span>زانکۆکان</span></div>
+          <div class="opt" data-type="peymanga"><span>🏫</span><span>پەیمانگاکان</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="tabs" id="uniTabs">
+      <button class="tab active" data-own="all">هەموو</button>
+      <button class="tab" data-own="gov">حکومییەکان</button>
+      <button class="tab" data-own="private">تایبەتەکان</button>
+    </div>
+    <div class="grid" id="uniGrid"></div>
+  </section>
+
+  <!-- GRADE FINDER PAGE -->
+  <section id="page-finder" style="display:none;">
+    <div class="finder-wrap">
+      <div class="finder-card">
+        <div class="finder-title">🔎 دۆزینەوەی بەشی گونجاو بە پێی نمرەکەت</div>
+        <input class="finder-input" id="gradeInput" type="number" step="0.1" min="0" max="10" placeholder="نمرەکەت بنووسە...">
+        <select class="finder-select" id="finderStream">
+          <option value="zanisti">زانستی</option>
+          <option value="edebi">ئەدەبی</option>
+        </select>
+        <select class="finder-select" id="finderType">
+          <option value="all">هەموو جۆرە بەشێک</option>
+          <option value="zanko">تەنها زانکۆ</option>
+          <option value="peymanga">تەنها پەیمانگا</option>
+        </select>
+        <div class="finder-btns">
+          <button class="btn ghost" id="finderReset">✕ گەڕانەوە</button>
+          <button class="btn primary" id="finderSearch">🔍 بگەڕێ</button>
+        </div>
+      </div>
+      <div class="finder-results" id="finderResults"></div>
+    </div>
+  </section>
+
+  <!-- GENERIC PLACEHOLDER PAGE -->
+  <section id="page-placeholder" style="display:none;">
+    <div class="placeholder">
+      <div class="big-ico">🚧</div>
+      <div class="msg" id="placeholderLabel">بەردەست نییە لە ئێستادا</div>
+      <div class="sub">ئەم بەشە هێشتا لە قۆناغی پێشکەوتندایە و بەم زووانە چالاک دەبێت.</div>
+    </div>
+  </section>
+
+</main>
+
+<!-- DETAIL MODAL -->
+<div class="modal-scrim" id="modalScrim">
+  <div class="modal-sheet" id="modalSheet"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="dahatu-images.js"></script>
+<script src="dahatu-logic.js"></script>
+</body>
+</html>
