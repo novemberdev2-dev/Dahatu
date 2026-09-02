@@ -9,20 +9,25 @@
     { id:'generalmed', title:'پزیشکی گشتی', img:IMG.generalmed, score:8.5, cat:'pizishki', stream:'zanisti', own:'gov' },
     { id:'nursing', title:'پەرستاری', img:IMG.nursing, score:7.3, cat:'pizishki', stream:'zanisti', own:'gov' },
     { id:'architecture', title:'تەلارسازی', img:IMG.architecture, score:8.0, cat:'endaziyari', stream:'zanisti', own:'private' },
-    { id:'dentistry', title:'دکتۆری ددان', img:IMG.dentistry, score:9.4, cat:'pizishki', stream:'zanisti', own:'gov' },
+    { id:'dentistry', title:'دکتۆری ددان', img:IMG.dentistry, score:9.0, cat:'pizishki', stream:'zanisti', own:'gov' },
     { id:'pharmacy', title:'دەرمانسازی', img:IMG.pharmacy, score:7.4, cat:'pizishki', stream:'zanisti', own:'private' },
     { id:'aviation', title:'فڕۆکەوانی', img:IMG.aviation, score:8.8, cat:'other', stream:'zanisti', own:'private' },
-    { id:'veterinary', title:'ڤێرتێرنەری', img:IMG.veterinary, score:6.8, cat:'pizishki', stream:'zanisti', own:'gov' },
+    { id:'veterinary', title:'پزیشکی ئاژەڵان', img:IMG.veterinary, score:6.8, cat:'pizishki', stream:'zanisti', own:'gov' },
     { id:'law', title:'قانوون', img:IMG.law, score:6.0, cat:'other', stream:'edebi', own:'gov' },
     { id:'roadbuilding', title:'ئەندازیاری ڕێگاو بان', img:IMG.roadbuilding, score:6.0, cat:'endaziyari', stream:'zanisti', own:'gov' },
+    { id:'lang-farsi', title:'زمانی فارسی', img:IMG.lang_farsi, score:5.1, cat:'endaziyari', stream:'zanisti', own:'gov' },
+    { id:'lang-en', title:'زمانی ئینگلیزی', img:IMG.lang_en, score:6.0, cat:'endaziyari', stream:'zanisti', own:'gov' },
+    { id:'lang-ar', title:'زمانی ئەرەبی', img:IMG.lang_ar, score:6.0, cat:'endaziyari', stream:'zanisti', own:'gov' },
+    { id:'lang-ch', title:'زمانی چینی', img:IMG.lang_ch, score:6.0, cat:'endaziyari', stream:'zanisti', own:'gov' },
+    { id:'lang-fr', title:'زمانی فەڕەنسی', img:IMG.lang_fr, score:6.0, cat:'endaziyari', stream:'zanisti', own:'gov' },
+    { id:'lang-de', title:'زمانی ئەڵمانی', img:IMG.lang_de, score:5.0, cat:'endaziyari', stream:'zanisti', own:'gov' },
+ 
+ 
+ 
+ 
   ];
 
   const LANG_COURSES = [
-    { id:'lang-en', title:'زمانی ئینگلیزی', flag:'🇬🇧', grad:'linear-gradient(135deg,#1d3557,#457b9d)', score:4.6, cat:'zaman', stream:'edebi', own:'gov' },
-    { id:'lang-fa', title:'زمانی فارسی', flag:'🇮🇷', grad:'linear-gradient(135deg,#264653,#2a9d8f)', score:5.6, cat:'zaman', stream:'edebi', own:'gov' },
-    { id:'lang-zh', title:'زمانی چینی', flag:'🇨🇳', grad:'linear-gradient(135deg,#7f1d1d,#b91c1c)', score:4.0, cat:'zaman', stream:'edebi', own:'private' },
-    { id:'lang-fr', title:'زمانی فەڕەنسی', flag:'🇫🇷', grad:'linear-gradient(135deg,#1e3a8a,#3730a3)', score:3.9, cat:'zaman', stream:'edebi', own:'private' },
-    { id:'lang-de', title:'زمانی ئەڵمانی', flag:'🇩🇪', grad:'linear-gradient(135deg,#3a3a3a,#111111)', score:5.0, cat:'zaman', stream:'edebi', own:'gov' },
   ];
 
   const ALL_ITEMS = COURSES.concat(LANG_COURSES);
